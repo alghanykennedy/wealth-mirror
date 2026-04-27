@@ -4,6 +4,6 @@
   "devCommand": "next dev",
   "installCommand": "npm install",
   "env": {
-    "ANTHROPIC_API_KEY": "@anthropic-api-key"
+    "OPENROUTER_API_KEY": "@openrouter-api-key"
   }
 }

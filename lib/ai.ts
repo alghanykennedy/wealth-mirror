@@ -31,17 +31,13 @@ OUTPUT FORMAT: Respond ONLY with a valid JSON object. Do not include markdown co
       "severity": "low|medium|high|critical",
       "description": "1 sentence about what this bias looks like for this person specifically",
       "evidence": "brief explanation of why their choices suggest this bias",
-      "interventions": ["tactic 1", "tactic 2", "tactic 3"],
-      "color": "#hexcolor"
+      "interventions": ["tactic 1", "tactic 2", "tactic 3"]
     }
   ],
   "overallRiskScore": 0,
   "keyInsight": "string — the single most important thing this person needs to understand about themselves",
   "strengths": ["strength 1", "strength 2"]
-}
-
-Color map:
-loss_aversion: #e05c2c, overconfidence: #e5a82e, recency_bias: #4c7aed, mental_accounting: #8b5cf6, status_quo_bias: #10b981, herding: #ec4899, anchoring: #06b6d4, confirmation_bias: #f97316`
+}`
 
 const SCENARIO_SYSTEM = `You are WealthMirror's real-time bias detection engine. Given a financial scenario and a user's reaction, identify which cognitive biases are present.
 
@@ -90,7 +86,16 @@ export async function analyzeWealthProfile(
   const cleaned = content.replace(/```json|```/g, '').trim()
   
   try {
-    return JSON.parse(cleaned) as WealthProfile
+    const profile = JSON.parse(cleaned) as WealthProfile
+    
+    // Inject colors from BIAS_METADATA
+    const { BIAS_METADATA } = await import('./types')
+    profile.biases = profile.biases.map(bias => ({
+      ...bias,
+      color: BIAS_METADATA[bias.key]?.color || '#e5a82e'
+    }))
+
+    return profile
   } catch {
     throw new Error(`Failed to parse AI response: ${cleaned.substring(0, 200)}`)
   }

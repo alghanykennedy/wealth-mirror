@@ -41,7 +41,7 @@ cp .env.local.example .env.local
 
 Edit `.env.local` and add your Anthropic API key:
 ```
-ANTHROPIC_API_KEY=sk-ant-...
+OPENROUTER_API_KEY=sk-ant-...
 ```
 
 Get your key at [console.anthropic.com](https://console.anthropic.com)
@@ -67,12 +67,12 @@ npm install -g vercel
 vercel
 
 # Set environment variable in Vercel dashboard:
-# ANTHROPIC_API_KEY = your key
+# OPENROUTER_API_KEY = your key
 ```
 
 Or via CLI:
 ```bash
-vercel env add ANTHROPIC_API_KEY
+vercel env add OPENROUTER_API_KEY
 ```
 
 ## Project structure
