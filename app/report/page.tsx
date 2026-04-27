@@ -443,7 +443,7 @@ export default function ReportPage() {
                       {scenarioResult.biasesDetected.map((b, i) => (
                         <div key={i} className="p-4 rounded-xl bg-white/2 border border-white/5">
                           <div className="text-gold-400 text-sm font-medium mb-1.5">{b.name}</div>
-                          <p className="text-white/45 text-sm italic">"{b.evidence}"</p>
+                          <p className="text-white/45 text-sm italic">&quot;{b.evidence}&quot;</p>
                         </div>
                       ))}
                     </div>

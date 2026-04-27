@@ -6,6 +6,14 @@ import Link from 'next/link'
 import { ASSESSMENT_QUESTIONS } from '@/lib/types'
 import { WealthMirrorLogo } from '@/components/Logo'
 
+const LOADING_MESSAGES = [
+  'Analyzing your behavioral patterns…',
+  'Calculating bias coefficients…',
+  'Mapping cognitive signatures…',
+  'Building your wealth profile…',
+  'Finalizing interventions…',
+]
+
 export default function AssessmentPage() {
   const router = useRouter()
   const [step, setStep] = useState(0) // 0 = intro, 1-5 = questions, 6 = loading
@@ -14,13 +22,6 @@ export default function AssessmentPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [loadingMsg, setLoadingMsg] = useState(0)
 
-  const LOADING_MESSAGES = [
-    'Analyzing your behavioral patterns…',
-    'Calculating bias coefficients…',
-    'Mapping cognitive signatures…',
-    'Building your wealth profile…',
-    'Finalizing interventions…',
-  ]
 
   useEffect(() => {
     if (isSubmitting) {

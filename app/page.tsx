@@ -268,7 +268,7 @@ export default function HomePage() {
                   Sample Profile
                 </div>
                 <h2 className="font-display text-4xl text-white/90 mb-6 leading-tight">
-                  Meet "The Fearful Protector"
+                  Meet &quot;The Fearful Protector&quot;
                 </h2>
                 <p className="text-white/40 leading-relaxed mb-8 text-sm">
                   Your fear of loss is 2.4× stronger than your desire for gain. You likely exited positions
